@@ -10,19 +10,20 @@ import { Router } from '@angular/router';
 })
 export class HeroesListComponent implements OnInit {
 
-  heroes: Heroes[];
+  heroes: Heroes[] = [];
 
   constructor(private hs: HeroesService,private router: Router) { }
 
   ngOnInit() {
-    this.getHeroes();
+    this.getListHeroes();
   }
 
-  getHeroes(){
+  getListHeroes(){
     this.hs.getHeroes().subscribe(
       data => {
         this.heroes = data;
-      });
+      }
+    );
   }
 
   deleteHero(id) {
