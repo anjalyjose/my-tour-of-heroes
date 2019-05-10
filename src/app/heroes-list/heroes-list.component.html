@@ -1,21 +1,28 @@
 <div>
     <h3>Lists Hero</h3>
-  </div>
-  <br>
-<table class="table table-hover">
-    <thead>
-    <tr>
-        <td>Name</td>
-        <td>Age</td>
-        <td colspan="2">Actions</td>
-    </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let hero of heroes">
-            <td>{{ hero.name }}</td>
-            <td>{{ hero.age }}</td>
-            <td><a [routerLink]="['edit', hero.id]" class="btn btn-primary">Edit</a></td>
-            <td><a style="cursor:pointer;" (click)="deleteHero(hero.id)" class="btn btn-danger">Delete</a></td>
+</div>
+<br>
+<div *ngIf="heroes?.length > 0">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <td>Name</td>
+            <td>Age</td>
+            <td colspan="2">Actions</td>
         </tr>
-    </tbody>
-  </table>
+        </thead>
+        <tbody>
+            <tr *ngFor="let hero of heroes">
+                <td>{{ hero.name }}</td>
+                <td>{{ hero.age }}</td>
+                <td><a [routerLink]="['edit', hero.id]" class="btn btn-primary">Edit</a>
+                <a href="#" style="cursor:pointer; margin-left: 10px;" (click)="deleteHero(hero.id)" class="btn btn-danger">Delete</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div *ngIf="heroes?.length === 0" class="col-xs-12">
+    <p class="text-center">
+        Não foram encontrados itens para a sua busca.
+    </p>
+</div>

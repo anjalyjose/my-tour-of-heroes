@@ -17,14 +17,19 @@
           <div class="form-group">
               <label class="col-md-4">Age</label>
               <input type="text" class="form-control" formControlName="age" #age />
+          </div>
+          <div *ngIf="FormHero.controls['age'].invalid && (FormHero.controls['age'].dirty || FormHero.controls['age'].touched)" class="alert alert-danger">
+            <div *ngIf="FormHero.controls['age'].errors.required">
+              Age is required!
             </div>
+          </div>
           <div class="form-group">
-              <button (click)="addHero(name.value, age.value)"
-                  [disabled]="FormHero.pristine || FormHero.invalid"
-                  class="btn btn-primary">
-                  Add Hero
-              </button>
-            </div>
+            <button (click)="addHero(name.value, age.value)"
+                [disabled]="FormHero.pristine || FormHero.invalid"
+                class="btn btn-primary">
+                Add Hero
+            </button>
+          </div>
     </form>
   </div>
 </div>

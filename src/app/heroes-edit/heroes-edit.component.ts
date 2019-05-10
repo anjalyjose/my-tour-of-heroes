@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
-import { Heroes } from '../heroes.model';
 import { HeroesService } from '../heroes.service';
 
 @Component({

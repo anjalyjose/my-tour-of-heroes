@@ -29,14 +29,19 @@ export class HeroesListComponent implements OnInit {
   constructor(private hs: HeroesService,private router: Router) { }
 
   ngOnInit() {
-    this.hs.getHeroes().subscribe((data: Heroes[])=>{
+    this.getHeroes();
+  }
+
+  getHeroes(){
+    this.hs.getHeroes().subscribe(
+      data => {
         this.heroes = data;
-    })
+      });
   }
 
   deleteHero(id) {
     this.hs.removeHero(id).subscribe(res => {
-      console.log('Deleted');
+      alert('Deleted');
       this.router.navigate(['/heroes'])
     });
   }

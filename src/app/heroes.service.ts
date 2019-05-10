@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import 'rxjs/add/operator/map';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +12,8 @@ export class HeroesService {
 
     constructor(private http: HttpClient) { }
 
-    getHeroes(){
-      return this.http.get(`${this.uri}`);
+    getHeroes():Observable<any>{
+      return this.http.get(`${this.uri}`).map(res => {return res});
     }
 
     saveHero(name, age) {
@@ -19,7 +21,7 @@ export class HeroesService {
         name: name,
         age: age
       };
-      this.http.post(`${this.uri}`, obj).subscribe(res => console.log('Done'));
+      this.http.post(`${this.uri}`, obj).subscribe(res => {return res});
     }
 
     editHero(id) {
@@ -35,7 +37,6 @@ export class HeroesService {
     }
 
     removeHero(id: number) {
-      console.log(id);
       return this.http.delete(`${this.uri}/${id}`);
     }
 }

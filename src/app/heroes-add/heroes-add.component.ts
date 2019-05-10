@@ -11,13 +11,15 @@ import { Router } from '@angular/router';
 export class HeroesAddComponent implements OnInit {
 
   FormHero: FormGroup;
+
   constructor(private fb: FormBuilder,private hs: HeroesService,private router: Router) {
     this.createForm();
   }
+  
   createForm() {
     this.FormHero = this.fb.group({
-      name: ['', Validators.required ],
-      age: ['']
+      name: ['', Validators.required],
+      age: ['', Validators.required]
     });
   }
 
