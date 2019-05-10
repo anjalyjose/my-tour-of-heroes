@@ -1,0 +1,25 @@
+<div>
+  <h3>Form Hero</h3>
+</div>
+<br>
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="formHero" (ngSubmit)="addHero()">
+          <div class="form-group">
+            <label class="col-md-4">Name</label>
+            <input type="text" class="form-control" placeholder="Name" [formControl]="formHero.controls['name']"
+            [ngClass]="{'is-invalid': formHero.controls['name'].hasError('required') && formHero.controls['name'].touched}" />
+          <div class="invalid-feedback" *ngIf="formHero.controls['name'].hasError('required') && formHero.controls['name'].touched">Name is required</div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4">Age</label>
+            <input type="text" class="form-control" placeholder="Age" [formControl]="formHero.controls['age']"
+            [ngClass]="{'is-invalid': formHero.controls['age'].hasError('required') && formHero.controls['age'].touched}" />
+          <div class="invalid-feedback" *ngIf="formHero.controls['age'].hasError('required') && formHero.controls['age'].touched">Age is required</div>
+          </div>
+          <div class="form-group">
+            <button type="submit" [disabled]="!formHero.valid" class="btn btn-primary">Add Hero</button>
+          </div>
+    </form>
+  </div>
+</div>

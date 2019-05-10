@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { HeroesService } from '../heroes.service';
 import { Router } from '@angular/router';
+import { Heroes } from '../heroes.model';
 
 @Component({
   selector: 'app-heroes-add',
@@ -10,25 +11,23 @@ import { Router } from '@angular/router';
 })
 export class HeroesAddComponent implements OnInit {
 
-  FormHero: FormGroup;
+  hero: Heroes;
 
-  constructor(private fb: FormBuilder,private hs: HeroesService,private router: Router) {
-    this.createForm();
-  }
-  
-  createForm() {
-    this.FormHero = this.fb.group({
-      name: ['', Validators.required],
-      age: ['', Validators.required]
-    });
-  }
+  formHero: FormGroup;
 
-  addHero(name, age) {
-    this.hs.saveHero(name, age);
+  constructor(private fb: FormBuilder,private hs: HeroesService,private router: Router) {}
+
+  addHero() {
+    this.hero = this.formHero.value;
+    this.hs.saveHero(this.hero).subscribe(res => {return res},error => {console.log(error)});
     this.router.navigate(['/heroes'])
   }
 
   ngOnInit() {
+    this.formHero = this.fb.group({
+      name: ['', Validators.required],
+      age: ['', Validators.required]
+    });
   }
 
 }

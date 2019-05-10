@@ -1,11 +1,6 @@
 {
   "heroes": [
     {
-      "name": "Hulk",
-      "age": "19",
-      "id": 4
-    },
-    {
       "name": "Ant-man",
       "age": "12",
       "id": 5
@@ -26,7 +21,7 @@
       "id": 8
     },
     {
-      "name": "Fury",
+      "name": "Fury1",
       "age": "43",
       "id": 9
     }
