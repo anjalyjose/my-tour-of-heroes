@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Heroes } from '../heroes.model';
 import { HeroesService } from '../heroes.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-heroes-list',
@@ -12,7 +13,7 @@ export class HeroesListComponent implements OnInit {
 
   heroes: Heroes[] = [];
 
-  constructor(private hs: HeroesService,private router: Router) { }
+  constructor(private hs: HeroesService,private router: Router,private toastr: ToastrService) { }
 
   ngOnInit() {
     this.getListHeroes();
@@ -27,13 +28,13 @@ export class HeroesListComponent implements OnInit {
   }
 
   deleteHero(id) {
-    const mustDelete = confirm('Deseja realmente excluir este item?');
-    
-    if (mustDelete){
-      this.hs.removeHero(id).subscribe(res => {
-        this.router.navigate(['/heroes'])
-      });
-    }
-    
+    this.hs.removeHero(id).subscribe(res => {
+      this.toastr.success('Heroes Delete!', 'Delete successfully');
+      this.getListHeroes();
+    }, error => {
+      this.toastr.error('Heroes Not Delete!', 'Delete unsuccessfully');
+      console.log(error);
+    });
   }
+
 }

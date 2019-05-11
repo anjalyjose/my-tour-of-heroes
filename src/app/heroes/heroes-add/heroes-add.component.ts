@@ -3,6 +3,7 @@ import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { HeroesService } from '../heroes.service';
 import { Router } from '@angular/router';
 import { Heroes } from '../heroes.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-heroes-add',
@@ -15,12 +16,13 @@ export class HeroesAddComponent implements OnInit {
 
   formHero: FormGroup;
 
-  constructor(private fb: FormBuilder,private hs: HeroesService,private router: Router) {}
+  constructor(private fb: FormBuilder,private hs: HeroesService,private router: Router, private toastr: ToastrService) {}
 
   addHero() {
     this.hero = this.formHero.value;
     this.hs.saveHero(this.hero).subscribe(
-      res => {
+      () => {
+        this.toastr.success('Heroes Created!', 'Created successfully');
         this.router.navigate(['/heroes']);
       },error => {
         console.log(error)

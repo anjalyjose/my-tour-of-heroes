@@ -16,7 +16,7 @@
                 <td>{{ hero.name }}</td>
                 <td>{{ hero.age }}</td>
                 <td><a [routerLink]="['edit', hero.id]" class="btn btn-primary">Edit</a>
-                <a href="#" style="cursor:pointer; margin-left: 10px;" (click)="deleteHero(hero.id)" class="btn btn-danger">Delete</a></td>
+                <a style="cursor:pointer; margin-left: 10px; color:white;" (click)="deleteHero(hero.id)" class="btn btn-danger">Delete</a></td>
             </tr>
         </tbody>
     </table>

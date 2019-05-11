@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { HeroesService } from '../heroes.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-heroes-edit',
@@ -16,7 +17,7 @@ export class HeroesEditComponent implements OnInit {
   
   id: number;
 
-  constructor(private route: ActivatedRoute, private router: Router, private hs: HeroesService, private fb: FormBuilder) {}
+  constructor(private route: ActivatedRoute, private router: Router, private hs: HeroesService, private fb: FormBuilder,private toastr: ToastrService) {}
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -38,6 +39,7 @@ export class HeroesEditComponent implements OnInit {
     this.hero = this.formHero.value;
     this.hs.updateHero(this.hero,this.id).subscribe(
       res => {
+        this.toastr.success('Heroes Update!', 'Update successfully');
         this.router.navigate(['/heroes']);
       },error => {
         console.log(error)

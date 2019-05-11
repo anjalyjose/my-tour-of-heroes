@@ -1,39 +1,9 @@
 {
   "heroes": [
     {
-      "name": "Ant-man2",
-      "age": "122",
-      "id": 5
-    },
-    {
-      "name": "Spider Man2",
-      "age": "19",
-      "id": 6
-    },
-    {
-      "name": "Dr.Strange",
-      "age": "31",
-      "id": 7
-    },
-    {
-      "name": "Captain Marvel",
-      "age": "31",
-      "id": 8
-    },
-    {
-      "name": "Fury",
-      "age": "43",
-      "id": 9
-    },
-    {
-      "name": "Testing",
-      "age": "123",
-      "id": 10
-    },
-    {
-      "name": "Testing",
-      "age": "12",
-      "id": 11
+      "name": "c",
+      "age": "c",
+      "id": 4
     }
   ]
 }
