@@ -19,8 +19,13 @@ export class HeroesAddComponent implements OnInit {
 
   addHero() {
     this.hero = this.formHero.value;
-    this.hs.saveHero(this.hero).subscribe(res => {return res},error => {console.log(error)});
-    this.router.navigate(['/heroes'])
+    this.hs.saveHero(this.hero).subscribe(
+      res => {
+        this.router.navigate(['/heroes']);
+      },error => {
+        console.log(error)
+      }
+    );
   }
 
   ngOnInit() {

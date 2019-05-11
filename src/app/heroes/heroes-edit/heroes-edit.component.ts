@@ -36,7 +36,12 @@ export class HeroesEditComponent implements OnInit {
   }
   updateHero(){
     this.hero = this.formHero.value;
-    this.hs.updateHero(this.hero,this.id).subscribe(res => {return res},error => {console.log(error)});
-    this.router.navigate(['/heroes'])
+    this.hs.updateHero(this.hero,this.id).subscribe(
+      res => {
+        this.router.navigate(['/heroes']);
+      },error => {
+        console.log(error)
+      }
+    ); 
   }
 }
