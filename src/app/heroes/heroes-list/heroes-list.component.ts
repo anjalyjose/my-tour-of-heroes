@@ -28,13 +28,15 @@ export class HeroesListComponent implements OnInit {
   }
 
   deleteHero(id) {
-    this.hs.removeHero(id).subscribe(res => {
-      this.toastr.success('Heroes Delete!', 'Delete successfully');
-      this.getListHeroes();
-    }, error => {
-      this.toastr.error('Heroes Not Delete!', 'Delete unsuccessfully');
-      console.log(error);
-    });
+    if(confirm("Are you sure to delete: "+id+" ?")){
+      this.hs.removeHero(id).subscribe(res => {
+        this.toastr.success('Heroes Delete!', 'Delete successfully');
+        this.getListHeroes();
+      }, error => {
+        this.toastr.error('Heroes Not Delete!', 'Delete unsuccessfully');
+        console.log(error);
+      });
+    }
   }
 
 }

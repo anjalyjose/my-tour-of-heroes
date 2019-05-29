@@ -6,13 +6,15 @@
     <table id="myTable" class="table table-hover">
         <thead>
         <tr>
-            <td>Name</td>
-            <td>Age</td>
-            <td colspan="2">Actions</td>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th colspan="2">Actions</th>
         </tr>
         </thead>
         <tbody>
             <tr *ngFor="let hero of heroes">
+                <td>{{ hero.id }}</td>
                 <td>{{ hero.name }}</td>
                 <td>{{ hero.age }}</td>
                 <td><a [routerLink]="['edit', hero.id]" class="btn btn-primary">Edit</a>
